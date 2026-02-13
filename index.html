@@ -89,29 +89,164 @@
 							<h2>Avaliações dos Pacientes</h2>
 							<p>Veja o que nossos pacientes dizem sobre o atendimento</p>
 						</header>
-						<div class="box alt">
-							<div class="row gtr-uniform">
-								<section class="col-12">
-									<div style="text-align: center; padding: 2em 0;">
-										<p style="font-size: 1.2em; color: #555; margin-bottom: 1.5em;">
-											Confira as avaliações reais dos meus pacientes no Google e conheça a experiência de quem já foi atendido.
-										</p>
-										<div style="margin: 2em 0;">
-											<span style="color: #f4b400; font-size: 2em;">★★★★★</span>
-										</div>
-										<a href="https://www.google.com/search?q=Dr.+Diego+Mascarós+oftalmologista+avaliações" target="_blank" class="button primary large">
-											Ver Avaliações no Google
-										</a>
-										<p style="margin-top: 1.5em; font-size: 0.9em; color: #777;">
-											<i class="icon solid fa-star" style="color: #f4b400;"></i>
-											Avaliações verificadas pelo Google
-										</p>
-									</div>
-								</section>
+						<div class="testimonial-carousel">
+							<div class="testimonial-container">
+								<div class="testimonial active">
+									<div class="stars">★★★★★</div>
+									<p class="testimonial-text">"Ótimo médico, com atendimento humano e personalizado. Busquei doutor Diego para fazer minha catarata, me explicou tudo das lentes que iriam dentro do meu olho e escolhemos juntos a melhor opção. Estou extremamente satisfeito. Diego é honesto e preza pelo melhor de seu paciente."</p>
+								</div>
+								<div class="testimonial">
+									<div class="stars">★★★★★</div>
+									<p class="testimonial-text">"Tive a primeira consulta com o Dr. Diego e fui muito bem atendido. Ele demonstrou bastante atenção e escutou todas as minhas dúvidas com calma. Além de ser atencioso, mostrou bastante conhecimento e profissionalismo. Saí da consulta confiante e satisfeito com o atendimento, recomendo sem dúvidas."</p>
+								</div>
+								<div class="testimonial">
+									<div class="stars">★★★★★</div>
+									<p class="testimonial-text">"Excelente profissional. Uso óculos desde os 5 anos e sempre fiz consultas periódicas de acompanhamento. Dessa vez passei com o Dr. Diego e fiquei muito impressionado com a qualidade da consulta. Recomendo fortemente."</p>
+								</div>
+								<div class="testimonial">
+									<div class="stars">★★★★★</div>
+									<p class="testimonial-text">"Dr. Diego foi super simpático e totalmente paciente na consulta. Explicou com clareza o diagnóstico e me deixou tranquilo em relação ao processo. Confio no Dr. de olhos abertos e fechados, rs. Indico fortemente."</p>
+								</div>
+								<div class="testimonial">
+									<div class="stars">★★★★★</div>
+									<p class="testimonial-text">"Dr. Diego além de ser uma pessoa maravilhosa é um excelente profissional! Formação e trajetória profissional impecáveis. Com certeza um dos melhores profissionais do país na área. Confio e recomendo de olhos fechados!"</p>
+								</div>
 							</div>
+							<div class="carousel-dots">
+								<span class="dot active" onclick="currentSlide(1)"></span>
+								<span class="dot" onclick="currentSlide(2)"></span>
+								<span class="dot" onclick="currentSlide(3)"></span>
+								<span class="dot" onclick="currentSlide(4)"></span>
+								<span class="dot" onclick="currentSlide(5)"></span>
+							</div>
+						</div>
+						<div style="text-align: center; margin-top: 2em;">
+							<a href="https://www.google.com/search?q=Dr.+Diego+Mascarós+oftalmologista+avaliações" target="_blank" class="button primary">
+								Ver Mais Avaliações
+							</a>
 						</div>
 					</div>
 				</section>
+
+				<style>
+				.testimonial-carousel {
+					position: relative;
+					max-width: 800px;
+					margin: 0 auto;
+					padding: 2em 1em;
+				}
+				
+				.testimonial-container {
+					position: relative;
+					min-height: 250px;
+				}
+				
+				.testimonial {
+					display: none;
+					text-align: center;
+					padding: 2em;
+					background: rgba(255, 255, 255, 0.05);
+					border-radius: 10px;
+					animation: fadeIn 1s;
+				}
+				
+				.testimonial.active {
+					display: block;
+				}
+				
+				.stars {
+					color: #f4b400;
+					font-size: 2em;
+					margin-bottom: 1em;
+				}
+				
+				.testimonial-text {
+					font-size: 1.1em;
+					line-height: 1.8;
+					color: #e0e0e0;
+					font-style: italic;
+				}
+				
+				.carousel-dots {
+					text-align: center;
+					margin-top: 2em;
+				}
+				
+				.dot {
+					height: 12px;
+					width: 12px;
+					margin: 0 5px;
+					background-color: #bbb;
+					border-radius: 50%;
+					display: inline-block;
+					cursor: pointer;
+					transition: background-color 0.3s;
+				}
+				
+				.dot.active,
+				.dot:hover {
+					background-color: #717171;
+				}
+				
+				@keyframes fadeIn {
+					from { opacity: 0; }
+					to { opacity: 1; }
+				}
+				
+				@media screen and (max-width: 768px) {
+					.testimonial-text {
+						font-size: 1em;
+					}
+					.testimonial {
+						padding: 1.5em;
+					}
+				}
+				</style>
+
+				<script>
+				let slideIndex = 1;
+				let slideTimer;
+				
+				function showSlides(n) {
+					let slides = document.getElementsByClassName("testimonial");
+					let dots = document.getElementsByClassName("dot");
+					
+					if (n > slides.length) { slideIndex = 1 }
+					if (n < 1) { slideIndex = slides.length }
+					
+					for (let i = 0; i < slides.length; i++) {
+						slides[i].classList.remove("active");
+					}
+					for (let i = 0; i < dots.length; i++) {
+						dots[i].classList.remove("active");
+					}
+					
+					slides[slideIndex - 1].classList.add("active");
+					dots[slideIndex - 1].classList.add("active");
+				}
+				
+				function currentSlide(n) {
+					clearInterval(slideTimer);
+					slideIndex = n;
+					showSlides(slideIndex);
+					startAutoSlide();
+				}
+				
+				function nextSlide() {
+					slideIndex++;
+					showSlides(slideIndex);
+				}
+				
+				function startAutoSlide() {
+					slideTimer = setInterval(nextSlide, 5000); // Muda a cada 5 segundos
+				}
+				
+				// Iniciar o carrossel quando a página carregar
+				document.addEventListener('DOMContentLoaded', function() {
+					showSlides(slideIndex);
+					startAutoSlide();
+				});
+				</script>
 
 			<!-- Three -->
 				<section id="three" class="spotlight style3 left">
@@ -214,6 +349,7 @@
 
 	</body>
 </html>
+
 
 
 
